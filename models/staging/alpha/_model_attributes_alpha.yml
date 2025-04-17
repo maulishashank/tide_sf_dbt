@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_alpha
+    config:
+      tags: ["nightly", "test", "alpha", "stage"]
+    columns:
+      - name: company_name
+        tests:
+          - not_null

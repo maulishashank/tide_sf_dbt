@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: source_bravo
+    description: ""
+    database: dw_landing_db
+    schema: bravo
+    tables:
+      - name: source_b
+        description: "source_b landing table"

@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_bravo
+    config:
+      tags: ["nightly", "test", "bravo", "stage"]
+    columns:
+      - name: company_name
+        tests:
+          - not_null
