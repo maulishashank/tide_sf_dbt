@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: source_lookup_tables
+    description: ""
+    database: dw_integration_db
+    schema: lookup
+    tables:
+      - name: company_hierarchy
+        description: "COMPANY_HIERARCHY lookup table"
+      - name: customer_mapping
+        description: "CUSTOMER_MAPPING lookup table"

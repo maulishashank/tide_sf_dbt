@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'tide_dbt'
 version: '1.0.0'
 config-version: 2
 
@@ -36,7 +36,48 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_new_project:
+  tide_dbt:
     # Applies to all files under models/example/
+    +persist_docs:
+      relation: true
+      columns: true
     example:
-      +materialized: table
+      +database: "{{ env_var('DBT_STAGING_DB') }}"
+      +materialized: 'view'
+      +schema: ALPHA
+      +tags: ["nightly"]
+    landing:
+      +database: "{{ env_var('DBT_LANDING_DB') }}"
+      +materialized: 'table'
+      +schema: ALPHA
+      +tags: ["nightly"]
+    dim:
+      +database: "{{ env_var('DBT_INTEGRATION_DB') }}"
+      +materialized: 'table'
+      +schema: DIM
+      +tags: ["nightly"]
+    fact:
+      +database: "{{ env_var('DBT_INTEGRATION_DB') }}"
+      +materialized: 'table'
+      +schema: FACT
+      +tags: ["nightly"]
+    staging:
+      +database: "{{ env_var('DBT_STAGING_DB') }}"
+      +materialized: 'table'
+      +tags: ["nightly"]
+      alpha:
+        +schema: ALPHA
+      bravo:
+        +schema: BRAVO
+
+    agg:
+      +database: "{{ env_var('DBT_INTEGRATION_DB') }}"
+      +materialized: 'table'
+      +schema: AGG
+      +tags: ["nightly"]
+    lookup:
+      +database: "{{ env_var('DBT_INTEGRATION_DB') }}"
+      +materialized: 'table'
+      +schema: LOOKUP
+      +tags: ["nightly"]
+

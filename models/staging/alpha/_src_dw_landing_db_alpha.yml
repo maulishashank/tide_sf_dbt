@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: source_alpha
+    description: ""
+    database: dw_landing_db
+    schema: alpha
+    tables:
+      - name: source_a
+        description: "source_a landing table"
